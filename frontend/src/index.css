@@ -1,0 +1,135 @@
+
+* {
+  box-sizing: border-box;
+}
+
+/* === OLIVE GREEN BACKGROUND === */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2c4a3c, #3d6f54);
+  overflow: hidden;
+}
+
+/* Floating Glow Orbs */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%);
+  filter: blur(100px);
+  animation: float 10s infinite alternate ease-in-out;
+}
+
+body::before { top: -100px; left: -100px; }
+body::after { bottom: -100px; right: -100px; animation-delay: 2s; }
+
+@keyframes float {
+  from { transform: translateY(0px); }
+  to { transform: translateY(40px); }
+}
+
+/* === LOGIN CARD === */
+.auth-container {
+  width: 400px;
+  padding: 45px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  animation: softFloat 1.3s ease;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* Card entrance animation */
+@keyframes softFloat {
+  0% { opacity: 0; transform: translateY(25px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* === LOGO === */
+.flowpay-logo {
+  font-size: 36px;
+  font-weight: 900;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 28px;
+  letter-spacing: -1px;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.25);
+}
+
+/* === INPUTS === */
+.auth-input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 14px;
+  border: none;
+  font-size: 15px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.85);
+  transition: 0.25s;
+}
+
+.auth-input:focus {
+  box-shadow: 0 0 10px rgba(60, 110, 80, 0.7);
+  background: white;
+}
+
+/* === BUTTON (Register/Login) === */
+.btn-grad {
+  width: 100%;
+  display: block;
+  padding: 15px;
+  background-image: linear-gradient(135deg, #2c4a3c 0%, #3d6f54 100%);
+  text-align: center;
+  color: white;
+  border-radius: 14px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  transition: 0.3s;
+  background-size: 200% auto;
+  margin-top: 12px;
+}
+
+
+.btn-grad:hover {
+  background-position: right center;
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+/* === SWITCH TEXT === */
+.switch-text {
+  margin-top: 18px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.switch-text a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.auth-input,
+.btn-grad {
+  width: 100%;
+}
+
+.app-logo {
+  width: 180px;
+  display: block;
+  margin: 0 auto 25px auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+}
