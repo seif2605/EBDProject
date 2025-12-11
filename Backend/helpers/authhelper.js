@@ -27,6 +27,10 @@ exports.registerUser = async (req, res) => {
       phone,
     });
 
+    const Wallet = require("../models/Wallet");
+    await Wallet.create({ user: user._id, balance: 0 });
+
+
     res.json({
       message: "User registered successfully",
       token: generateToken(user._id),

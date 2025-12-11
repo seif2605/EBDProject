@@ -3,24 +3,26 @@ import axiosClient from "../api/axiosClient";
 import { Link } from "react-router-dom";
 import logo from "../assets/flowpay-logo.png";
 
-
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+  
 
   const handleLogin = async () => {
     try {
       const res = await axiosClient.post("/auth/login", form);
       alert("Login successful!");
       localStorage.setItem("token", res.data.token);
-      window.location.href = "/dashboard";
+      window.location.href = "/wallet";
+
     } catch (err) {
       alert(err?.response?.data?.message || "Login failed");
     }
   };
+
 
   return (
     <div className="auth-container">
@@ -56,4 +58,5 @@ export default function Login() {
       </p>
     </div>
   );
+  
 }

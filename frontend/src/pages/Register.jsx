@@ -3,7 +3,6 @@ import axiosClient from "../api/axiosClient";
 import { Link } from "react-router-dom";
 import logo from "../assets/flowpay-logo.png";
 
-
 export default function Register() {
   const [form, setForm] = useState({
     fullName: "",
@@ -21,7 +20,10 @@ export default function Register() {
       const res = await axiosClient.post("/auth/register", form);
       alert("Registration successful!");
       localStorage.setItem("token", res.data.token);
-      window.location.href = "/dashboard";
+
+      // FIX: redirect to wallet instead of dashboard
+      window.location.href = "/wallet";
+
     } catch (err) {
       alert(err?.response?.data?.message || "Registration failed");
     }
@@ -30,11 +32,10 @@ export default function Register() {
   return (
     <div className="auth-container">
       <img 
-  src={logo} 
-  alt="FlowPay Logo" 
-  className="app-logo" 
-/>
-
+        src={logo} 
+        alt="FlowPay Logo" 
+        className="app-logo" 
+      />
 
       <input
         className="auth-input"
@@ -70,10 +71,8 @@ export default function Register() {
       </button>
 
       <p className="switch-text">
-        Already have an account?{" "}
-        <Link to="/login">Login</Link>
+        Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
   );
-  
 }
